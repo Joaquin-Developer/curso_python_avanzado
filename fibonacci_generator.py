@@ -2,11 +2,9 @@
 import time
 
 
-def fibo_gen():
+def fibo_gen(tope=None):
     """fibonacci con generadores"""
-    num1 = 0
-    num2 = 1
-    counter = 0
+    num1, num2, counter = 0, 1, 0
 
     while True:
         if counter == 0:
@@ -15,15 +13,19 @@ def fibo_gen():
         elif counter == 1:
             counter += 1
             yield num2
+
         aux = num1 + num2
-        num1, num2 = num2, aux
-        counter += 1
-        yield aux
+        if not tope or counter < tope:
+            num1, num2 = num2, aux
+            counter += 1
+            yield aux
+        else:
+            break
 
 
 def main():
     """main function"""
-    fibonacci = fibo_gen()
+    fibonacci = fibo_gen(tope=8)
     for element in fibonacci:
         print(element)
         time.sleep(1)
