@@ -5,3 +5,4 @@
 - Scope
 - Generadores
 - Sets
+- Fechas y Timezones: datetime y pytz
